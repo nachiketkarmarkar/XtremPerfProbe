@@ -62,6 +62,12 @@ Similar to .csv files, it also generates .pdf files that contain charts for perf
 - In the same working directory download all python modules located in Github's PyXtrem repository below:
   - https://github.com/nachiketkarmarkar/PyXtrem
 
+## Docker Instructions
+- Clone repo and perform `docker build -t xtremperfprobe .`
+- Do a one line container and command using: `docker run -ti xtremperfprobe collectPerfStats.py -<option>  <parameter>`
+- Use the CLI with: `docker run -ti --entrypoint=/bin/bash xtremperfprobe` and use `python collectPerfStats.py -<option>  <parameter>`
+- Follow the CLI Usage Instructions below.
+
 ## Usage Instructions
 In order to learn about different options to pass to the script, run:
 
