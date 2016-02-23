@@ -168,7 +168,7 @@ def main():
             noVsphereStatsFlag = 1
             hostnames = listOfHosts.split(',')
             esxHostPerfThreads = startEsxPerfCollect(vcip, vcuser, vcpwd, hostnames, samplingRate)
-        if listOfVols != None or listOfVols != "":
+        if listOfVols:
             print "Collecting stats for specified volumes"
             volumes = listOfVols.split(',')
             print volumes
