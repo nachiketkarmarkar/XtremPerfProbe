@@ -70,7 +70,8 @@ class collectXmsPerfThread(threading.Thread):
         self.pwd = pwd
         self.xmsPerf={'read-latency': [],'write-latency': [],\
                       'read-bandwidth':[],'write-bandwidth':[],'bandwidth':[],\
-                      'read-iops':[],'write-iops':[],'iops':[]}
+                      'read-iops':[],'write-iops':[],'iops':[],\
+                      'dedup-ratio':[],'compression-factor':[]}
         self.threadStatus = "running"
         self.file_handler = open("xmsPerfStats.csv","wb")
         self.writer = csv.writer(self.file_handler,dialect='excel')
@@ -105,6 +106,8 @@ class collectXmsPerfThread(threading.Thread):
             self.xmsPerf['read-iops'] = str(output['content']['rd-iops'])
             self.xmsPerf['write-iops'] = str(output['content']['wr-iops'])
             self.xmsPerf['iops'] = str(output['content']['iops'])
+            self.xmsPerf['dedup-ratio'] = xtremXmsLib.getCurrentDedupRatio(self.ip,self.user,self.pwd)
+            self.xmsPerf['compression-factor'] = xtremXmsLib.getCurrentCompressionFactor(self.ip,self.user,self.pwd)
             self.recordStats(self.xmsPerf.keys())
             #print self.xmsPerf
 
